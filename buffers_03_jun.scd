@@ -45,7 +45,9 @@ Ndef(\sliceBuffer, { |rate=1|
 	var slices = 10;
 	var slice_dur=(~buffer1.duration / slices);
 	var trigger = Impulse.kr(1 / (slice_dur/rate));
+	// Generates a list of index slices from 0 to the number of slices (like: [0, 1, 2, ...] and scramble/random this list
 	var possible_slices = (0..slices-1).scramble;
+	// Creates a sequence out of the scrambled list and go over it one by one
 	var slice_number = Demand.kr(
 		trigger,
 		0,
